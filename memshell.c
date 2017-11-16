@@ -19,6 +19,7 @@ void aide()
   fprintf(stderr,"M         :   afficher la liste de tous les emplacements "
                                "memoire (libres et occupes)\n");
   fprintf(stderr,"m         :   afficher le dump de la memoire\n");
+  fprintf(stderr,"s         :   pour changer la stratégie d'allocation\n");
   fprintf(stderr,"h         :   afficher cette aide\n");
   fprintf(stderr,"q         :   quitter ce programme\n");
   fprintf(stderr,"\n");
@@ -96,6 +97,9 @@ int main()
         case 'h':
           aide();
           break;
+        case 's':
+	  switch_strategy();
+	  break;
         case 'q':
           exit(0);
         default:

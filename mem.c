@@ -211,6 +211,36 @@ void mem_fit(mem_fit_function_t* function){
     fonction_recherche = function;
 }
 
+void switch_strategy(){
+	fflush(stdout);
+	char commande;
+	fprintf(stderr,"Donnez la stratégie que vous souhaitez utiliser :\n\t- f pour first fit\n\t- b pour best fit\n\t- w pour worst fit\n");	
+	printf("? ");
+	fflush(stdout);
+	commande = getchar(); //MDR C BO LA VIE
+	commande = getchar();
+	printf("My char is %c\n",commande);
+	switch (commande) {
+		case 'f':
+			fprintf(stderr,"Vous avez choisi d'utiliser la stratégie first fit !\n");
+			mem_fit(&mem_fit_first);
+		break;
+		case 'b':
+			fprintf(stderr,"Vous avez choisi d'utiliser la stratégie best fit !\n");
+			mem_fit(&mem_fit_best);
+		break;
+		case 'w':
+			fprintf(stderr,"Vous avez choisi d'utiliser la stratégie worst fit !\n");
+			mem_fit(&mem_fit_worst);
+		break;
+		default:
+			fprintf(stderr,"Vous avez choisi d'utiliser la stratégie first fit !\n");
+			mem_fit(&mem_fit_first);
+		break;
+	}
+
+}
+
 //Renvoi l'adresse de la premiere zone ou l'on peut allouer
 struct fb* mem_fit_first(struct fb* list, size_t size){
         while(list != NULL && list->size < size+sizeof(size_t)){

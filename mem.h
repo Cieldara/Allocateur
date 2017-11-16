@@ -25,4 +25,6 @@ struct fb* mem_fit_first(struct fb*, size_t);
 struct fb* mem_fit_best(struct fb*, size_t);
 struct fb* mem_fit_worst(struct fb*, size_t);
 
+void switch_strategy();
+
 #endif
